@@ -1,0 +1,231 @@
+[
+    {
+        "id": 1,
+        "title": "Aspesi New Parkettone Coat Green",
+        "price": 804,
+        "description": "Aspesi's Parkettone is a longer parka with a soft padding for a natural efficient warmth and long lasting insulation. Two outer pockets with snap closure, zipped chest inner pocket and one lower inner patch pocket with button closure. Concealed zip and snap closure in the front. This garment is breathable for comfort and warmth.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/g9HtDzn/2020-2021by-KUDETA-AGENCY-AB-All-Rights-Reserved-Legal-Privacy-statement.jpg",
+        "rate": 4.3,
+        "count": 300
+     
+    },
+    {
+        "id": 2,
+        "title": "Valstarino Bomber Dark Brown Suede",
+        "price": 1029,
+        "description": "Valstar's Valstarino jacket is based on the World War 1 A-1 flight jacket. Cut from luxurious super soft suede in dark brown, it features soft ribbed trims and a two buttoned stand collar. Two characteristic buttoned front pockets with hidden hand warmer pockets. Buttoned front. Semi-fitted cut allowing layering. Lined in viscose with two inner pockets.",
+        "image": "https://i.ibb.co/yfHSv8y/2020-2021by-KUDETA-AGENCY-AB-All-Rights-Reserved-Legal-Privacy-statement.jpg",
+       
+            "rate": 4.6,
+            "count":250
+
+    },
+    {
+        "id": 3,
+        "title": "Valstar Down Padded Waterproof Flannel Field Jacket",
+        "price": 833,
+        "description": "Quite possibly this season's outerwear stunner - a classic four-pocket field jacket that brings more than meets the eye. Water- and windproof thanks to its outer flannel fabric from Vitale Barberis Canonico's Earth , Wind and Fire line of performance fabrics. Rich down lining with two inner pocket and a concealed hood. Light, warm and very cozy! Made in Italy.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/BKpHbJ6/atn1024-Valstar-Down-Padded-waterproof-Flannel-1.jpg",
+      
+            "rate": 5.0,
+            "count": 30
+        
+    },
+    {
+        "id": 4,
+        "title": "De Petrillo Double-Breasted Navy Blazer",
+        "price": 930,
+        "description":"The brass-buttoned, double-breasted navy blazer is one of those garments that sooner or later finds its way into the minds and wardrobes of most of those interested in classic menswear - usable for a wide range of situations, contexts and outfits, this is a key piece for many of us. This one is made in the Sorrento pattern by De Petrillo in their characteristic, soft Neapolitan house style with an unpadded shoulder, half lining and soft construction. Features flapped hip and ticket pockets, peak lapels and antique-style brass buttons. Drop 7. Made in Italy.",
+        "image": "https://i.ibb.co/yX7KWb7/2020-2021by-KUDETA-AGENCY-AB-All-Rights-Reserved-Legal-Privacy-statement.jpg",
+      
+            "rate": 4.0,
+            "count": 333
+
+    },
+    {
+        "id": 5,
+        "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        "price": 109.95,
+        "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/58WWRpc/81f-PKd-2-AYL-AC-SL1500.jpg",
+            "rate": 3.9,
+            "count": 120
+    },
+    {
+        "id": 6,
+        "title": " Standard Denim Jacket",
+        "price": 70,
+        "description": "version of the classic denim jacket. 13oz 100% Cotton selvage denim with stainless steel donut buttons. Two chest pockets and two side pockets. Button waistband adjuster at back",
+        "image": "https://i.ibb.co/3zPNFmk/3.jpgg",
+            "rate": 4.8,
+            "count": 120
+    },
+    {
+        "id": 7,
+        "title": "Mens Casual Premium Slim Fit T-Shirts ",
+        "price": 22.3,
+        "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/pQdRTMJ/71-3-Hj-GNDUL-AC-SY879-SX-UX-SY-UY.jpg",
+       
+            "rate": 4.1,
+            "count": 259
+
+    },
+    {
+        "id": 8,
+        "title": "Mens Cotton Jacket",
+        "price": 55.99,
+        "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/7Ny3873/71li-ujtl-UL-AC-UX679.jpg",
+    
+            "rate": 4.7,
+            "count": 500
+
+    },
+    {
+        "id": 9,
+        "title": "Mens Cotton Jacket",
+        "price": 50,
+        "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/2sbRZr0/1.jpg",
+      
+            "rate": 4.5,
+            "count": 400
+     
+    },
+    {
+        "id": 10,
+        "title": "Mens Casual Slim Fit",
+        "price": 15.99,
+        "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
+        "category": "men's clothing",
+        "image": "https://i.ibb.co/XykPN5m/71-YXze-Ousl-L-AC-UY879.jpg",
+      
+            "rate": 2.1,
+            "count": 430
+
+    },
+   
+    {
+        "id": 11,
+        "title": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+        "price": 56.99,
+        "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/mqSBkTW/51-Y5-NI-I5j-L-AC-UX679.jpg",
+        
+            "rate": 2.6,
+            "count": 235
+        
+    },
+    {
+        "id": 12,
+        "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+        "price": 29.95,
+        "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/87X2f1Y/81-XH0e8fef-L-AC-UY879.jpg",
+            "rate": 2.9,
+             "count": 340
+ 
+    },
+    {
+        "id": 13,
+        "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+        "price": 39.99,
+        "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/QYzWw3F/71-Hbl-AHs5x-L-AC-UY879-2.jpg",
+       
+            "rate": 3.8,
+            "count": 679
+      
+    },
+    {
+        "id": 14,
+        "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        "price": 9.85,
+        "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/jJsmN5z/71z3kp-MAYs-L-AC-UY879.jpg",
+    
+            "rate": 4.7,
+            "count":500
+    },
+    {
+        "id": 15,
+        "title": "Aspesi Hassio Pile Collar Corduroy Coat",
+        "price": 666,
+        "description": "Super stylish 70s inspired coat with pile collar (and front lining) from Aspesi. Made from a 100% cotton hazelnut brown corduroy. Roomy outer patch pockets and two inner pockets (one buttoned, one zipped). Made in Italy.",
+        "image": "https://i.ibb.co/5jFJBS6/2020-2021by-KUDETA-AGENCY-AB-All-Rights-Reserved-Legal-Privacy-statement.jpg",
+
+            "rate": 5.0,
+            "count": 195
+        
+    },
+    {
+        "id": 16,
+        "title": "Ring Jacket Pea Coat Wool Alpaca Beige",
+        "price": 1617,
+        "description": "A PeaCoat at its best. With a mixture of 80% wool and 20% Alpaca, both the feel and the finish are at the absolute highest level. With hand warmer pockets and double inner pockets, you can safely store your belongings safely. It is made in Japan and woven in a discreet herringbone fabric.",
+        "image": "https://i.ibb.co/n17htLH/2020-2021by-KUDETA-AGENCY-AB-All-Rights-Reserved-Legal-Privacy-statement.jpg",
+        
+            "rate": 4.50,
+            "count": 550
+        
+    },
+    {
+        "id": 17,
+        "title": "Opna Women's Short Sleeve Moisture",
+        "price": 7.95,
+        "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/SPdHTPS/51eg55u-Wmd-L-AC-UX679.jpg",
+     
+            "rate": 4.5,
+            "count": 146
+        
+    },
+    {
+        "id": 18,
+        "title": "DANVOUY Womens T Shirt Casual Cotton Short",
+        "price": 12.99,
+        "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/xzqv7s4/61p-HAEJ4-NML-AC-UX679.jpg",
+        
+            "rate": 3.6,
+            "count": 145
+        
+    },
+    {
+        "id": 19,
+        "title": "Women's Long Sleeve Shirts",
+        "price": 55.5,
+        "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/nBX7XNZ/10.jpg",
+        
+            "rate": 4.0,
+            "count": 500
+        
+    },
+    {
+        "id": 20,
+        "title": "Women's Elizabeth Coat",
+        "price": 38.5,
+        "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+        "category": "women's clothing",
+        "image": "https://i.ibb.co/HPG6PXb/8.jpg",
+        
+            "rate": 4.5,
+            "count": 300
+        
+    }
+]

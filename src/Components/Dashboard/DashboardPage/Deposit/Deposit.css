@@ -1,0 +1,25 @@
+.deposit-from {
+  border-radius: 10px;
+  background-color: white;
+  margin: auto;
+}
+
+.page-title {
+  background-color: #fcf6f6;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+.product-details {
+  padding-top: 5px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.add-deposit {
+  border-style: solid;
+  border-color: #acacac;
+  border-radius: 30px;
+  border-width: 10px;
+}

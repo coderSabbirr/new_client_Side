@@ -1,0 +1,89 @@
+.banner {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.single-col {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: 37%;
+}
+.single-col .single-banner {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.single-col .single-banner .item-disc .item-title {
+  font-size: 24px;
+  color: #323232;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 0 14px;
+}
+.single-col .single-banner .item-disc .item-amount {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #575656;
+  text-transform: capitalize;
+}
+.single-col .single-banner img {
+  width: 100%;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.single-col .single-banner:hover img {
+  -webkit-transform: scale(1.1) rotate(3deg);
+  transform: scale(1.1) rotate(3deg);
+}
+.single-col .single-banner .item-disc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 60px 0px;
+  line-height: 1;
+  justify-content: flex-end;
+}
+.center-col {
+  width: 24.5% !important;
+}
+.single-col .single-banner .item-disc .item-title {
+  font-size: 24px;
+  color: #323232;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-right: 40%;
+}
+.single-col .single-banner .item-disc .item-amount {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #575656;
+  text-transform: capitalize;
+  margin-right: 40%;
+}
+.best-seller {
+  color: #fb5d5d;
+}
+.banner-shop-now {
+  color: #575656 !important;
+  font-weight: 600;
+}
+@media only screen and (max-width: 688px) {
+  .best-seller {
+    font-size: 14px;
+  }
+  .single-col,
+  .center-col {
+    padding-right: 0;
+  }
+  .item-title {
+    font-size: 14px !important;
+  }
+}

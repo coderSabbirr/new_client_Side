@@ -1,0 +1,23 @@
+.SupportAgent {
+  padding: 20px;
+}
+
+thead,
+th {
+  background-color: grey;
+  color: #000;
+  border: 2px solid #1d1919;
+}
+tbody,
+td {
+  border: 2px solid #1d1919;
+  background-color: #eeeeee;
+}
+
+.page-title {
+  background-color: #fcf6f6;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}

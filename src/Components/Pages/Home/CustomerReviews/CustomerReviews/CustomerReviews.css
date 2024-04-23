@@ -1,0 +1,16 @@
+.allreviews {
+  justify-content: center;
+}
+.review-h4 {
+  font-size: 16px;
+  color: rgb(151, 5, 73);
+}
+.reviews-sec {
+  margin-top: 150px;
+}
+.reviews-sec h2 {
+  margin-bottom: 60px;
+}
+.testimonials {
+  color: #fd5169;
+}
