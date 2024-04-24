@@ -18,7 +18,7 @@ const DepositAdminReport = () => {
   };
   //   ?.filter((person) => person.selectSubAdmin === selectname)
   useEffect(() => {
-    fetch("http://localhost:5000/deposit")
+    fetch("https://react365.onrender.com/deposit")
       .then((res) => res.json())
       .then((data) => setMainData(data));
   });

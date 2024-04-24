@@ -17,7 +17,7 @@ const SingleWithdrawAdminReport = ({ mainData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `http://localhost:5000/withdraw/${id}`;
+          const url = `https://react365.onrender.com/withdraw/${id}`;
           fetch(url, {
             method: "DELETE",
           });
@@ -49,7 +49,7 @@ const SingleWithdrawAdminReport = ({ mainData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `http://localhost:5000/withdrawupdate/${id}`;
+          const url = `https://react365.onrender.com/withdrawupdate/${id}`;
           fetch(url, {
             method: "PUT",
             headers: {

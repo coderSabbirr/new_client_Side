@@ -5,7 +5,7 @@ const AdminWithdraw = () => {
   const [depositDatas, setDepositData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/withdraw")
+    fetch("https://react365.onrender.com/withdraw")
       .then((res) => res.json())
       .then((data) => setDepositData(data));
   });

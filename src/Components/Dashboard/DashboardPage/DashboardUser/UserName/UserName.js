@@ -8,7 +8,7 @@ const UserName = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/orders/${user.email}`;
+    const url = `https://react365.onrender.com/orders/${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));

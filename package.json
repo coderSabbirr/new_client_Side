@@ -1,5 +1,5 @@
 {
-  "name": "jasci-fashion-client-side",
+  "name": "react_client_sidde",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
+    "@react-md/material-icons": "^5.1.6",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -18,6 +19,7 @@
     "react-hook-form": "^7.22.1",
     "react-icons": "^5.1.0",
     "react-iframe": "^1.8.5",
+    "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
     "react-share": "^4.4.0",

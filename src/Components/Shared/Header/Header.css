@@ -3,39 +3,29 @@ ul li a {
   color: #4c4c4c !important;
   font-size: 16px;
   font-weight: 400;
-  padding: 5px;
 }
 ul li a:hover {
   color: #8ab7ea !important;
 }
 
-nav {
-  padding: 25px !important;
-  background-color: #ffffff;
-}
-.sign-in {
-  color: #fb5d5d !important;
-  margin-left: 50px;
-}
-.dashbord button {
-  background-color: transparent !important;
-  margin-left: 50px;
-  padding: 3px 20px;
-  border-radius: 15px !important;
-}
-.user img {
-  width: 55px;
+/* .user img {
+  width: 30px;
   border-radius: 50%;
-}
-@media only screen and (max-width: 688px) {
-  .dashbord button {
-    background-color: transparent !important;
-    margin-left: 120px;
-    width: 80px;
-    border-radius: 15px !important;
-  }
-}
+} */
 
 .web-logo {
   width: 100px;
+}
+
+.nav_main {
+  display: flex;
+  justify-content: space-between;
+  background-color: #808081;
+  padding: 20px;
+}
+.web-logo {
+  width: 60px;
+}
+.login_header {
+  color: #091b36;
 }

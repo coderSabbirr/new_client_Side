@@ -107,7 +107,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, agent, method) => {
     const user = { email, displayName, agent };
-    fetch("http://localhost:5000/users", {
+    fetch("https://react365.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

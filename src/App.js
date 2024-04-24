@@ -2,12 +2,10 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./Components/Context/AuthProvider";
 import Dashbaord from "./Components/Dashboard/Dashboard/Dashboard";
-import Booking from "./Components/Pages/Booking/Booking";
+import SilderPro2 from "./Components/Dashboard/Dashboard/SilderPro2";
 import Login from "./Components/Pages/Login/Login";
 import NotFound from "./Components/Pages/NotFound/NotFound";
-import ProductView from "./Components/Pages/ProductView/ProductView";
 import Register from "./Components/Pages/Register/Register";
-import Shop from "./Components/Pages/Shop/Shop";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Footer from "./Components/Shared/Footer/Footer";
 import Header from "./Components/Shared/Header/Header";
@@ -22,11 +20,9 @@ function App() {
             <Route exact path="/">
               <Login></Login>
             </Route>
-            <Route exact path="/shop">
-              <Shop></Shop>
-            </Route>
-            <Route path="/productview/:productId">
-              <ProductView></ProductView>
+
+            <Route exact path="/silder">
+              <SilderPro2 />
             </Route>
 
             <PrivateRoute path="/dashboard">
@@ -36,13 +32,6 @@ function App() {
               <Sidebar></Sidebar>
             </PrivateRoute> */}
 
-            <Route path="/shop/productview/:productId">
-              <ProductView></ProductView>
-            </Route>
-
-            <PrivateRoute path="/booking/:productId">
-              <Booking></Booking>
-            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>

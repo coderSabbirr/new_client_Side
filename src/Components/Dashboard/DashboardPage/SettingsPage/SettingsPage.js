@@ -71,7 +71,7 @@ const SettingsPage = () => {
   const handleLoginSubmit = (e) => {
     loginData.time = new Date().toLocaleString();
     loginData.user_email = user.email;
-    fetch("http://localhost:5000/addpayment", {
+    fetch("https://react365.onrender.com/addpayment", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),
@@ -91,7 +91,7 @@ const SettingsPage = () => {
   const handlbankSubmit = (e) => {
     bankData.time = new Date().toLocaleString();
     bankData.user_email = user.email;
-    fetch("http://localhost:5000/addbank", {
+    fetch("https://react365.onrender.com/addbank", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(bankData),

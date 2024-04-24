@@ -5,15 +5,8 @@ const Footer = () => {
   return (
     <div className="footer ">
       <div className=" footer-text container">
-        <div className="address  common-div">
-          <img src="https://i.ibb.co/fvStVM0/logo-white.png" alt="" />
-          <p className="mt-4">
-            {" "}
-            Our no-haggle pricing is just the beginning of a no-hassle
-            experience. We treat people the way we’d want to be treated, so you
-            get the best car at the best price, without having to know anything
-            about cars.
-          </p>
+        {/* <div className="address  common-div">
+         
           <p>
             <a href="mailto:sabbirnahid5817@gmail.com">
               <i className="fas fa-envelope"></i> demo@admin.com
@@ -28,31 +21,10 @@ const Footer = () => {
           <i className="fab fa-twitter"></i>
           <i className="fab fa-linkedin"></i>
           <i className="fab fa-youtube"></i>
-        </div>
+        </div> */}
+        <div className="live-feed  common-div"></div>
         <div className="live-feed  common-div">
-          <h2>Quick Links</h2>
-          <ul className="mt-4">
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Comparison</li>
-          </ul>
-        </div>
-        <div className="live-feed  common-div">
-          <h2>Twitter Get Our Apps</h2>
-          <a href="..">
-            <img
-              className="mt-2 mb-3"
-              src="https://i.ibb.co/Wfb42jq/Screenshot-153.jpg"
-              alt="google"
-            />
-          </a>
-          <a href=".." alt="app-store">
-            <img
-              className="ps-1"
-              src="https://i.ibb.co/FnSFSmr/Screenshot-154.jpg"
-              alt=""
-            />
-          </a>
+          <h2> Get Our Apps</h2>
         </div>
       </div>
       <div>

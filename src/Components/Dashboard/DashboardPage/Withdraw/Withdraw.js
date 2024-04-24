@@ -22,12 +22,12 @@ const Withdraw = () => {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:5000/addpayment")
+    fetch("https://react365.onrender.com/addpayment")
       .then((res) => res.json())
       .then((data) => setPaymentOptions(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/addbank")
+    fetch("https://react365.onrender.com/addbank")
       .then((res) => res.json())
       .then((data) => setBankData(data));
   }, []);
@@ -48,7 +48,7 @@ const Withdraw = () => {
     loginData.name = user.displayName;
     loginData.user_email = user.email;
     loginData.status = update;
-    fetch("http://localhost:5000/withdraw", {
+    fetch("https://react365.onrender.com/withdraw", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),

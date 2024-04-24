@@ -19,7 +19,7 @@ const Register = () => {
 
   const [agent, setAgent] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/agentlist")
+    fetch("https://react365.onrender.com/agentlist")
       .then((res) => res.json())
       .then((data) => setAgent(data));
   }, []);

@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("http://localhost:5000/makeadmin", {
+    fetch("https://react365.onrender.com/makeadmin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
