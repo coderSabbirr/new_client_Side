@@ -1,16 +1,13 @@
 import { Box, Container, Grid, TextField } from "@mui/material";
-import { getAuth, updatePassword } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../../Hook/useAuth";
-import "./AdminSettings.css";
+import "./addspport.css";
 
-const AdminSettings = () => {
+const AddSupport = () => {
   const [loginData, setLoginData] = useState({});
-  const [agent, setAgent] = useState([]);
-  const [newPassword, setNewPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [supprtList, setSupportList] = useState([]);
 
   const { reset } = useForm();
   const { user, isLoading } = useAuth();
@@ -24,37 +21,16 @@ const AdminSettings = () => {
   };
 
   // password change options
-  const handleChangePassword = () => {
-    // if (loginData.password !== loginData.password2) {
-    //   return;
-    // }
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    // Update the user's password
-    updatePassword(user, newPassword)
-      .then(() => {
-        // Password updated successfully
-        console.log("Password updated successfully");
-        setNewPassword("");
-        setErrorMessage("");
-      })
-      .catch((error) => {
-        // An error occurred
-        console.error("Error updating password:", error.message);
-        setErrorMessage(error.message);
-      });
-  };
 
   useEffect(() => {
-    fetch("http://localhost:5000/agentlist")
+    fetch("http://localhost:5000/supportlist")
       .then((res) => res.json())
-      .then((data) => setAgent(data));
+      .then((data) => setSupportList(data));
   });
 
   const handleLoginSubmit = (e) => {
     loginData.user_email = user.email;
-    fetch("http://localhost:5000/agentlist", {
+    fetch("http://localhost:5000/supportlist", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),
@@ -92,7 +68,7 @@ const AdminSettings = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `http://localhost:5000/agentlist/${id}`;
+          const url = `http://localhost:5000/supportlist/${id}`;
           fetch(url, {
             method: "DELETE",
           });
@@ -110,59 +86,11 @@ const AdminSettings = () => {
   };
   return (
     <div className="add-deposit">
-      <div className="mt-5 mb-5 passwordChange ">
-        <div>
-          <h2>Change Password:</h2>
-
-          <br />
-          <TextField
-            sx={{ width: "40%", m: 1 }}
-            id="standard-basic"
-            label="New Password "
-            type="password"
-            name="password2"
-            onBlur={handleOnBlur}
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <br />
-
-          {/* <div className="container">
-            <div class="form-group mx-sm-3 mb-2">
-              <div row>
-                <div className="col">
-                  <h3>Password</h3>
-                </div>
-                <div className="col">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword2"
-                    placeholder="Password"
-                    style={{ width: "100%", marginLeft: "5px" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-          <button
-            className="btn btn-danger mt-2"
-            onClick={handleChangePassword}
-          >
-            Change Password
-          </button>
-          {errorMessage && (
-            <div className="">Password should be at least 6 characters</div>
-          )}
-        </div>
-      </div>
       <h3
         className="
       "
       >
-        Add Agent:{" "}
+        Add Suuport:{" "}
       </h3>
       <div className="container ">
         <Container className="text-center register">
@@ -176,17 +104,8 @@ const AdminSettings = () => {
                   <TextField
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="User Name "
-                    name="agentUsername"
-                    onBlur={handleOnBlur}
-                    type="text"
-                    required
-                  />
-                  <TextField
-                    sx={{ width: "100%", m: 1 }}
-                    id="standard-basic"
                     label="Agent Name "
-                    name="agentName"
+                    name="name"
                     onBlur={handleOnBlur}
                     type="text"
                     required
@@ -195,10 +114,10 @@ const AdminSettings = () => {
                   <TextField
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="Password"
-                    name="AgentPassword"
+                    label="Whatsapp No"
+                    name="whatsapp"
                     onBlur={handleOnBlur}
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -214,28 +133,23 @@ const AdminSettings = () => {
           {/* </Grid> */}
 
           <div className="SupportAgent">
-            <h5 className="mt-10 mb-10">Remove Agent</h5>
+            <h5 className="mt-10 mb-10">Remove Suuport Agent</h5>
             <div className="table-responsive ">
               <table className="table table-bordered ">
                 <thead>
                   <tr className="text-data">
                     <th scope="col">SI No</th>
                     <th scope="col">Name</th>
-
-                    <th scope="col"> User Name</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Agent Delete</th>
+                    <th scope="col">Whatsapp</th>
+                    <th scope="col"> Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {agent.map((pd, index) => (
+                  {supprtList.map((pd, index) => (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      <td>{pd?.agentName}</td>
-
-                      <td>{pd?.agentUsername}</td>
-                      <td>{pd?.AgentPassword}</td>
-
+                      <td>{pd?.name}</td>
+                      <td>{pd.whatsapp}</td>
                       <td>
                         <i
                           onClick={() => handleDelete(pd._id)}
@@ -254,4 +168,4 @@ const AdminSettings = () => {
   );
 };
 
-export default AdminSettings;
+export default AddSupport;

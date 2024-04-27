@@ -27,7 +27,7 @@ const SignleAdminWithdraw = ({ depositData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `https://react365.onrender.com/withdraw/${id}`;
+          const url = `http://localhost:5000/withdraw/${id}`;
           fetch(url, {
             method: "DELETE",
           });
@@ -60,7 +60,7 @@ const SignleAdminWithdraw = ({ depositData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `https://react365.onrender.com/withdrawupdate/${id}`;
+          const url = `http://localhost:5000/withdrawupdate/${id}`;
           fetch(url, {
             method: "PUT",
             headers: {

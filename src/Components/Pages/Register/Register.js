@@ -19,7 +19,7 @@ const Register = () => {
 
   const [agent, setAgent] = useState([]);
   useEffect(() => {
-    fetch("https://react365.onrender.com/agentlist")
+    fetch("http://localhost:5000/agentlist")
       .then((res) => res.json())
       .then((data) => setAgent(data));
   }, []);
@@ -36,12 +36,12 @@ const Register = () => {
     if (loginData.password !== loginData.password2) {
       return;
     }
-    console.log(loginData);
+
     registerUser(
       loginData.email,
       loginData.password,
       loginData.name,
-      loginData.agent,
+      loginData.agentName,
       history
     );
   };
@@ -102,14 +102,14 @@ const Register = () => {
                   defaultValue=""
                   id="grouped-native-select"
                   label="Select Agent"
-                  type="agent"
-                  name="agent"
+                  type="agentName"
+                  name="agentName"
                   onBlur={handleOnBlur}
                   required
                 >
                   <option aria-label="None" value="" />
                   {agent?.map((pd, index) => (
-                    <option value={pd.name}>{pd.name}</option>
+                    <option value={pd.agentName}>{pd.agentName}</option>
                   ))}
                 </Select>
               </FormControl>

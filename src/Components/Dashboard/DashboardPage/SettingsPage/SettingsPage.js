@@ -10,7 +10,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/useAuth";
@@ -21,13 +21,26 @@ import { getAuth, updatePassword } from "firebase/auth";
 const SettingsPage = () => {
   const [loginData, setLoginData] = useState({});
   const [bankData, setBankData] = useState({});
-  // const [currentPassword, setCurrentPassword] = useState("");
+  const [paymentOptions, setPaymentOptions] = useState([]);
+  const [bankOptions, setBankOptions] = useState([]);
   const [newPassword, setNewPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { reset } = useForm();
 
   const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/addpayment/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setPaymentOptions(data));
+  });
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/addbank/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setBankOptions(data));
+  });
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -44,7 +57,62 @@ const SettingsPage = () => {
     newbankData[field] = value;
     setBankData(newbankData);
   };
-
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const url = `http://localhost:5000/addpayment/${id}`;
+          fetch(url, {
+            method: "DELETE",
+          });
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        // window.location.reload();
+      });
+  };
+  const BankDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const url = `http://localhost:5000/addbank/${id}`;
+          fetch(url, {
+            method: "DELETE",
+          });
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        // window.location.reload();
+      });
+  };
   // password change
   const handleChangePassword = () => {
     // if (loginData.password !== loginData.password2) {
@@ -71,7 +139,7 @@ const SettingsPage = () => {
   const handleLoginSubmit = (e) => {
     loginData.time = new Date().toLocaleString();
     loginData.user_email = user.email;
-    fetch("https://react365.onrender.com/addpayment", {
+    fetch("http://localhost:5000/addpayment", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),
@@ -91,7 +159,7 @@ const SettingsPage = () => {
   const handlbankSubmit = (e) => {
     bankData.time = new Date().toLocaleString();
     bankData.user_email = user.email;
-    fetch("https://react365.onrender.com/addbank", {
+    fetch("http://localhost:5000/addbank", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(bankData),
@@ -305,6 +373,81 @@ const SettingsPage = () => {
 
           {/* </Grid> */}
         </Container>
+      </div>
+
+      <div>
+        <div className="SupportAgent">
+          <h5 className="mt-10 mb-10">Manage Mobile Account</h5>
+          <div className="table-responsive ">
+            <table className="table table-bordered ">
+              <thead>
+                <tr className="text-data">
+                  <th scope="col">SI No</th>
+
+                  <th scope="col">Gateway</th>
+                  <th scope="col">Mobile Number</th>
+                  <th scope="col"> Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paymentOptions.map((pd, index) => (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{pd?.mobileMethd}</td>
+                    <td>{pd.mobileNumber}</td>
+                    <td>
+                      <i
+                        onClick={() => handleDelete(pd._id)}
+                        className="fas fa-trash-alt delete-button text-center"
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="SupportAgent">
+          <h5 className="mt-10 mb-10">Manage Bank Account</h5>
+          <div className="table-responsive ">
+            <table className="table table-bordered ">
+              <thead>
+                <tr className="text-data">
+                  <th scope="col">SI No</th>
+
+                  <th scope="col">Bank Name</th>
+                  <th scope="col">Bank Details</th>
+                  <th scope="col"> Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bankOptions.map((pd, index) => (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{pd?.bankName}</td>
+                    <td>
+                      <>
+                        {`Account Name: ${pd.accountName}`}
+                        <br></br>
+                        {`Account Number: ${pd.accountNumber}`}
+                        <br></br>
+                        {`Routing Number: ${pd.routingNumber}`}
+                      </>
+                    </td>
+                    <td>
+                      <i
+                        onClick={() => BankDelete(pd._id)}
+                        className="fas fa-trash-alt delete-button text-center"
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div className="mt-5 mb-5 passwordChange ">
         <div>

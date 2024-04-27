@@ -18,7 +18,7 @@ const DepositAdminReport = () => {
   };
   //   ?.filter((person) => person.selectSubAdmin === selectname)
   useEffect(() => {
-    fetch("https://react365.onrender.com/deposit")
+    fetch("http://localhost:5000/deposit")
       .then((res) => res.json())
       .then((data) => setMainData(data));
   });
@@ -65,6 +65,15 @@ const DepositAdminReport = () => {
                 <th scope="col">Submit Date</th>
               </tr>
             </thead>
+
+            {mainDatas
+              ?.filter((person) => person?.email === mailData1.userName)
+              .map((mainData) => (
+                <SignleDepositAdminReport
+                  mainData={mainData}
+                  key={mainData?._id}
+                ></SignleDepositAdminReport>
+              ))}
 
             {mainDatas
               ?.filter((person) => person?.email === mailData1.userName)

@@ -25,11 +25,15 @@ import { styled, useTheme } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import PrivateRoute from "../../PrivateRoute/PrivateRoute";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import AddSupport from "../DashboardPage/AdminPage/AddSupport/AddSupport";
 import AdminDeposit from "../DashboardPage/AdminPage/AdminDeposit/AdminDeposit";
 import AdminSettings from "../DashboardPage/AdminPage/AdminSettings/AdminSettings";
 import AdminWithdraw from "../DashboardPage/AdminPage/AdminWithdraw/AdminWithdraw";
 import DepositAdminReport from "../DashboardPage/AdminPage/DepositAdminReport/DepositAdminReport";
+import ManageAccount from "../DashboardPage/AdminPage/ManageAccount/ManageAccount";
+import UserHistory from "../DashboardPage/AdminPage/UserHistory/UserHistory";
 import WithdrawAdminReport from "../DashboardPage/AdminPage/WithdrawAdminReport/WithdrawAdminReport";
 import UserName from "../DashboardPage/DashboardUser/UserName/UserName";
 import Deposit from "../DashboardPage/Deposit/Deposit";
@@ -92,7 +96,7 @@ const Dashbaord = () => {
   const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
-    fetch(`https://react365.onrender.com/checkAdmin/${user?.email}`)
+    fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data[0]?.role === "admin") {
@@ -137,208 +141,246 @@ const Dashbaord = () => {
                 </Typography>
               </Toolbar>
             </AppBar>
-            <div className="row">
-              <div className="col-9">
-                <Drawer
-                  sx={{
+
+            <div className="">
+              <Drawer
+                sx={{
+                  width: drawerWidth,
+                  flexShrink: 0,
+                  "& .MuiDrawer-paper": {
                     width: drawerWidth,
-                    flexShrink: 0,
-                    "& .MuiDrawer-paper": {
-                      width: drawerWidth,
-                      boxSizing: "border-box",
-                    },
-                  }}
-                  variant="persistent"
-                  anchor="left"
-                  open={open}
-                >
-                  <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                      {theme.direction === "ltr" ? (
-                        <ChevronLeftIcon />
-                      ) : (
-                        <ChevronRightIcon />
-                      )}
-                    </IconButton>
-                  </DrawerHeader>
-                  <Divider />
-                  <List>
-                    <ListItem disablePadding>
-                      <ListItemIcon></ListItemIcon>
-                      <Link to={`${url}/mydashboard`}>
-                        <ListItemText primary={user.email} />
-                      </Link>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <DashboardIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/mydashboard`}>
-                          <ListItemText primary="Dashboard" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <AddCircleOutlineIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/deposit`}>
-                          <ListItemText primary="Deposit" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <AttachMoneyIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/withdraw`}>
-                          <ListItemText primary="Withdraw" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <ContactSupportIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/Support`}>
-                          <ListItemText primary="Support" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <SettingsIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/Settings`}>
-                          <ListItemText primary="Settings" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <AddCircleOutlineIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/admindeposit`}>
-                          <ListItemText primary="Deposit" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <AttachMoneyIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/admintwithdraw`}>
-                          <ListItemText primary="Withdraw" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <SettingsIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/adminSettings`}>
-                          <ListItemText primary="Settings" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <InboxIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/depositreport`}>
-                          <ListItemText primary="Deposit Report" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <SummarizeIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/withdrawreport`}>
-                          <ListItemText primary="Withdraw Report" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <SummarizeIcon />
-                        </ListItemIcon>
-                        <Link to={`${url}/makeAdmin`}>
-                          <ListItemText primary="Make Admin" />
-                        </Link>
-                      </ListItemButton>
-                    </ListItem>
-                  </List>
-                  <Divider />
-                  <ListItem disablePadding onClick={logOut}>
+                    boxSizing: "border-box",
+                  },
+                }}
+                variant="persistent"
+                anchor="left"
+                open={open}
+              >
+                <DrawerHeader>
+                  <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === "ltr" ? (
+                      <ChevronLeftIcon />
+                    ) : (
+                      <ChevronRightIcon />
+                    )}
+                  </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <List>
+                  <ListItem disablePadding>
+                    <ListItemIcon></ListItemIcon>
+                    <Link to={`${url}/mydashboard`}>
+                      <ListItemText primary={user.email} />
+                    </Link>
+                  </ListItem>
+                  <ListItem disablePadding>
                     <ListItemButton>
                       <ListItemIcon>
-                        <LogoutIcon />
+                        <DashboardIcon />
                       </ListItemIcon>
-                      <Link to="..">
-                        <ListItemText primary="Logout" />
+                      <Link to={`${url}/mydashboard`}>
+                        <ListItemText primary="Dashboard" />
                       </Link>
                     </ListItemButton>
                   </ListItem>
-                </Drawer>
-              </div>
-              <div className="">
-                <div>
-                  <Switch>
-                    <Route path={`${path}/mydashboard`}>
-                      <UserName />
-                    </Route>
-                    <Route path={`${path}/deposit`}>
-                      <Deposit />
-                    </Route>
-                    <Route path={`${path}/withdraw`}>
-                      <Withdraw />
-                    </Route>
-                    <Route path={`${path}/support`}>
-                      <Support />
-                    </Route>
-                    <Route path={`${path}/settings`}>
-                      <SettingsPage />
-                    </Route>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <AddCircleOutlineIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/deposit`}>
+                        <ListItemText primary="Deposit" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
 
-                    <AdminRoute path={`${path}/admindeposit`}>
-                      <AdminDeposit />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/admintwithdraw`}>
-                      <AdminWithdraw />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/adminsettings`}>
-                      <AdminSettings />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/depositreport`}>
-                      <DepositAdminReport />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/withdrawreport`}>
-                      <WithdrawAdminReport />
-                    </AdminRoute>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <AttachMoneyIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/withdraw`}>
+                        <ListItemText primary="Withdraw" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <ContactSupportIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/Support`}>
+                        <ListItemText primary="Support" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/Settings`}>
+                        <ListItemText primary="Settings" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <AddCircleOutlineIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/admindeposit`}>
+                        <ListItemText primary="Deposit" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <AttachMoneyIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/admintwithdraw`}>
+                        <ListItemText primary="Withdraw" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <AttachMoneyIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/user`}>
+                        <ListItemText primary="User History" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/adminSettings`}>
+                        <ListItemText primary="Settings" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/manageaccount`}>
+                        <ListItemText primary="Manage Account" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/addsupport`}>
+                        <ListItemText primary="Add Support" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <InboxIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/depositreport`}>
+                        <ListItemText primary="Deposit Report" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SummarizeIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/withdrawreport`}>
+                        <ListItemText primary="Withdraw Report" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
 
-                    <AdminRoute path={`${path}/makeAdmin`}>
-                      <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
-
-                    <Route path={path}>
-                      <UserName />
-                    </Route>
-                  </Switch>
-                </div>
-              </div>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SummarizeIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/makeAdmin`}>
+                        <ListItemText primary="Make Admin" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                </List>
+                <Divider />
+                <ListItem disablePadding onClick={logOut}>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <LogoutIcon />
+                    </ListItemIcon>
+                    <Link to="..">
+                      <ListItemText primary="Logout" />
+                    </Link>
+                  </ListItemButton>
+                </ListItem>
+              </Drawer>
             </div>
+            <main className="" open={open}>
+              <Switch>
+                <PrivateRoute path={`${path}/mydashboard`}>
+                  <UserName />
+                </PrivateRoute>
+                <PrivateRoute path={`${path}/deposit`}>
+                  <Deposit />
+                </PrivateRoute>
+                <PrivateRoute path={`${path}/withdraw`}>
+                  <Withdraw />
+                </PrivateRoute>
+                <PrivateRoute path={`${path}/support`}>
+                  <Support />
+                </PrivateRoute>
+                <PrivateRoute path={`${path}/settings`}>
+                  <SettingsPage />
+                </PrivateRoute>
+
+                <AdminRoute path={`${path}/admindeposit`}>
+                  <AdminDeposit />
+                </AdminRoute>
+                <AdminRoute path={`${path}/user`}>
+                  <UserHistory />
+                </AdminRoute>
+                <AdminRoute path={`${path}/admintwithdraw`}>
+                  <AdminWithdraw />
+                </AdminRoute>
+                <AdminRoute path={`${path}/adminsettings`}>
+                  <AdminSettings />
+                </AdminRoute>
+                <AdminRoute path={`${path}/manageaccount`}>
+                  <ManageAccount />
+                </AdminRoute>
+                <AdminRoute path={`${path}/addsupport`}>
+                  <AddSupport />
+                </AdminRoute>
+                <AdminRoute path={`${path}/depositreport`}>
+                  <DepositAdminReport />
+                </AdminRoute>
+                <AdminRoute path={`${path}/withdrawreport`}>
+                  <WithdrawAdminReport />
+                </AdminRoute>
+
+                <AdminRoute path={`${path}/makeAdmin`}>
+                  <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+
+                <Route path={path}>
+                  <UserName />
+                </Route>
+              </Switch>
+            </main>
           </Box>
         </div>
       </div>

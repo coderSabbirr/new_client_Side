@@ -18,7 +18,7 @@ const SignleAdminDeposit = ({ depositData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `https://react365.onrender.com/deposit/${id}`;
+          const url = `http://localhost:5000/deposit/${id}`;
           fetch(url, {
             method: "DELETE",
           });
@@ -51,7 +51,7 @@ const SignleAdminDeposit = ({ depositData }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `https://react365.onrender.com/ordersupdate/${id}`;
+          const url = `http://localhost:5000/ordersupdate/${id}`;
           fetch(url, {
             method: "PUT",
             headers: {

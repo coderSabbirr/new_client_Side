@@ -44,7 +44,7 @@ const Deposit = () => {
     formData.append("displayName", user.displayName);
     formData.append("depositTime", depositTime);
 
-    fetch("https://react365.onrender.com/deposit", {
+    fetch("http://localhost:5000/deposit", {
       method: "POST",
       body: formData,
     })

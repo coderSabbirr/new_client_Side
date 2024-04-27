@@ -22,15 +22,15 @@ const Withdraw = () => {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    fetch("https://react365.onrender.com/addpayment")
+    fetch(`http://localhost:5000/addpayment/${user.email}`)
       .then((res) => res.json())
       .then((data) => setPaymentOptions(data));
-  }, []);
+  });
   useEffect(() => {
-    fetch("https://react365.onrender.com/addbank")
+    fetch(`http://localhost:5000/addbank/${user.email}`)
       .then((res) => res.json())
       .then((data) => setBankData(data));
-  }, []);
+  });
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -48,7 +48,7 @@ const Withdraw = () => {
     loginData.name = user.displayName;
     loginData.user_email = user.email;
     loginData.status = update;
-    fetch("https://react365.onrender.com/withdraw", {
+    fetch("http://localhost:5000/withdraw", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),

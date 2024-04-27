@@ -40,17 +40,17 @@ const useFirebase = () => {
   };
 
   // user register
-  const registerUser = (email, password, name, agent, history) => {
+  const registerUser = (email, password, name, agentName, history) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
-        const newUser = { email, displayName: name, agent };
+        const newUser = { email, displayName: name, agentName };
         setUser(newUser);
-        saveUser(email, name, agent, "POST");
+        saveUser(email, name, agentName, "POST");
         updateProfile(auth.currentUser, {
           displayName: name,
-          agent: agent,
+          agentName: agentName,
         })
           .then(() => {})
           .catch((error) => {});
@@ -105,9 +105,9 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const saveUser = (email, displayName, agent, method) => {
-    const user = { email, displayName, agent };
-    fetch("https://react365.onrender.com/users", {
+  const saveUser = (email, displayName, agentName, method) => {
+    const user = { email, displayName, agentName };
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",

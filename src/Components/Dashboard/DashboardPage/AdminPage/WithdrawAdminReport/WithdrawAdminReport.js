@@ -17,7 +17,7 @@ const WithdrawAdminReport = () => {
   };
   //   ?.filter((person) => person.selectSubAdmin === selectname)
   useEffect(() => {
-    fetch("https://react365.onrender.com/withdraw")
+    fetch("http://localhost:5000/withdraw")
       .then((res) => res.json())
       .then((data) => setMainData(data));
   });

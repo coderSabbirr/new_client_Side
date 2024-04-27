@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import "./Support.css";
 const Support = () => {
-  const [agent, setAgent] = useState([]);
+  const [supportlist, setSupportList] = useState([]);
   useEffect(() => {
-    fetch("https://react365.onrender.com/agentlist")
+    fetch("http://localhost:5000/supportlist")
       .then((res) => res.json())
-      .then((data) => setAgent(data));
+      .then((data) => setSupportList(data));
   }, []);
   return (
     <div className="SupportAgent">
-      <h5 className="page-title"> Agent List</h5>
+      <h5 className="page-title"> Support Agent List</h5>
       <div className="table-responsive ">
         <table className="table table-bordered ">
           <thead>
@@ -21,9 +21,9 @@ const Support = () => {
             </tr>
           </thead>
           <tbody>
-            {agent.map((pd, index) => (
+            {supportlist.map((pd, index) => (
               <tr>
-                <th scope="row">{pd?.agentID}</th>
+                <th scope="row">{index + 1}</th>
                 <td>{pd?.name}</td>
                 <td>
                   <a href={`https://wa.me/${pd?.whatsapp}`}>{pd.whatsapp}</a>

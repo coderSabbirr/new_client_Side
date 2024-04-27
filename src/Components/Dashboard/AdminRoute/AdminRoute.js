@@ -7,7 +7,7 @@ const AdminRoute = ({ children, ...rest }) => {
   const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
-    fetch(`https://react365.onrender.com/checkAdmin/${user?.email}`)
+    fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data[0]?.role === "admin") {

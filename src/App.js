@@ -28,9 +28,6 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashbaord></Dashbaord>
             </PrivateRoute>
-            {/* <PrivateRoute path="/dashboard">
-              <Sidebar></Sidebar>
-            </PrivateRoute> */}
 
             <Route path="/login">
               <Login></Login>
@@ -47,59 +44,6 @@ function App() {
         </Router>
       </AuthProvider>
     </div>
-
-    // <div className="App">
-    //   <AuthProvider>
-    //     <Router>
-    //       <Header />
-    //       <Routes>
-    //         <Route path="/" element={<Home />} />
-    //         <Route index element={<Home />} />
-    //         <Route path="home" element={<Home />} />
-    //         <Route path="shop" element={<Shop />} />
-    //         <Route path="login" element={<Login />} />
-    //         <Route path="register" element={<Register />} />
-    //         <Route path="productview/:productId" element={<ProductView />} />
-    //         <Route path="shop/productview/:productId" element={<ProductView />} />
-
-    //         <Route path="booking/:productId" element={<PrivateRoute >
-    //           <Booking />
-    //         </PrivateRoute>}></Route>
-
-    //         <Route path="dashbord/myorder" element={<PrivateRoute >
-    //           <MyOrder />
-    //         </PrivateRoute>}></Route>
-    //         <Route path="addreview" element={<PrivateRoute >
-    //           <ReviewAdd />
-    //         </PrivateRoute>}></Route>
-
-    //         <Route path="dashbord" element={<PrivateRoute >
-    //           <Dashbaord />
-    //         </PrivateRoute>}></Route>
-
-    //           <Route path={`dashbord/manageproduct`} element={<AdminRoute >
-    //             <ManageProducts />
-    //           </AdminRoute>}></Route>
-    //           <Route path={`dashbord/managereview`} element={<AdminRoute >
-    //             <ManageReview />
-    //           </AdminRoute>}></Route>
-    //           <Route path={`dashbord/manageorder`} element={<AdminRoute >
-    //             <MangeOrder />
-    //           </AdminRoute>}></Route>
-    //           <Route path={`dashbord/manageproduct`} element={<AdminRoute >
-    //             <ManageProducts />
-    //           </AdminRoute>}></Route>
-    //           <Route path={`dashbord/addproduct`} element={<AdminRoute >
-    //             <AddProducts />
-    //           </AdminRoute>}></Route>
-
-    //         <Route path="makeadmin" element={<MakeAdmin />} />
-    //         <Route path="*" element={<NotFound />} />
-    //       </Routes>
-    //     </Router>
-    //   </AuthProvider>
-
-    //   </div>
   );
 }
 

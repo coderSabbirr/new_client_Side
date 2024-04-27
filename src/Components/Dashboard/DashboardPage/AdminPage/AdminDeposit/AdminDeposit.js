@@ -5,7 +5,7 @@ const AdminDeposit = () => {
   const [depositDatas, setDepositData] = useState([]);
 
   useEffect(() => {
-    fetch("https://react365.onrender.com/deposit")
+    fetch("http://localhost:5000/deposit")
       .then((res) => res.json())
       .then((data) => setDepositData(data));
   });
