@@ -119,7 +119,7 @@ const Dashbaord = () => {
   };
 
   return (
-    <div className="Dhasboard-main">
+    <div className="">
       <div className="">
         <div className="">
           <Box>

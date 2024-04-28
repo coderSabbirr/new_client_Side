@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 const SingleWithdrawAdminReport = ({ mainData }) => {
   const { mobileMethd, Bank, amount, time, user_email } = mainData;
   const status = mainData?.status?.status;
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",

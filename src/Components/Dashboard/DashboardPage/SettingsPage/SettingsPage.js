@@ -324,7 +324,7 @@ const SettingsPage = () => {
                     className="your-email"
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="Nank Name"
+                    label="Bank Name"
                     name="bankName"
                     onBlur={handleOnBlurBank}
                     type="text"
@@ -334,7 +334,7 @@ const SettingsPage = () => {
                     className="your-email"
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="Account Name"
+                    label="Account Holder Name"
                     name="accountName"
                     onBlur={handleOnBlurBank}
                     type="text"

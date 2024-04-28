@@ -5,29 +5,15 @@ import {
   Grid,
   InputLabel,
   Select,
+  TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAuth from "../../../../Hook/useAuth";
 
 const ManageAccount = () => {
   const [loginData, setLoginData] = useState({});
-  const [paymentOptions, setPaymentOptions] = useState([]);
-  const [bankData, setBankData] = useState([]);
-  const { reset } = useForm();
-  const { user, isLoading } = useAuth();
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/addpayment/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setPaymentOptions(data));
-  }, []);
-  useEffect(() => {
-    fetch(`http://localhost:5000/addbank/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setBankData(data));
-  }, []);
+  const [bankData, setBankData] = useState({});
+  const [BankId, setBankId] = useState({});
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -36,33 +22,50 @@ const ManageAccount = () => {
     newLoginData[field] = value;
     setLoginData(newLoginData);
   };
-  //   console.log(handleOnBlur);
+
+  useEffect(() => {
+    const url = `http://localhost:5000/bankaccount`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const ids = data.map((bankDetail) => bankDetail._id);
+        setBankId(ids[0]);
+      });
+  }, []);
+  const handleBankblur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...bankData };
+    newLoginData[field] = value;
+    setBankData(newLoginData);
+  };
+
   const handleLoginSubmit = (e) => {
-    const update = {
-      status: "Pending",
-    };
-    loginData.name = user.displayName;
-    loginData.user_email = user.email;
-    loginData.status = update;
-    fetch("http://localhost:5000/withdraw", {
-      method: "POST",
+    fetch("http://localhost:5000/mobileaccount", {
+      method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(loginData),
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.insertedId) {
-          Swal.fire("Submited!", "", "Success");
-          reset();
-        }
-        reset();
+        e.preventDefault();
       });
-
-    e.preventDefault();
   };
-  console.log("====================================");
-  console.log(loginData);
-  console.log("====================================");
+
+  const handleBank = (e) => {
+    bankData.BankId = BankId;
+    fetch("http://localhost:5000/bankaccount", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(bankData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          Swal.fire("Updated!", "", "Success");
+        }
+      });
+  };
   const bull = (
     <Box
       component="span"
@@ -77,8 +80,6 @@ const ManageAccount = () => {
         <Container className="text-center register">
           {/* <Grid container spacing={2}> */}
           <Grid item>
-            <p className="or-sign"></p>
-
             <form onSubmit={handleLoginSubmit}>
               <div>
                 <FormControl sx={{ width: "100%", m: 1 }}>
@@ -90,8 +91,8 @@ const ManageAccount = () => {
                     defaultValue=""
                     id="grouped-native-select"
                     label="Select Method"
-                    type="mobileMethd"
-                    name="mobileMethd"
+                    type="mobileMethod"
+                    name="mobileMethod"
                     onBlur={handleOnBlur}
                   >
                     <option value="Bkash" className="text-capitalize">
@@ -106,6 +107,15 @@ const ManageAccount = () => {
                   </Select>
                 </FormControl>
               </div>
+              <TextField
+                sx={{ width: "100%", m: 1 }}
+                id="standard-basic"
+                label="Mobile Number"
+                name="mobileNumber"
+                onBlur={handleOnBlur}
+                type="number"
+                required
+              />
               <br />
               <button type="submi" className="sign-up-btn mb-5">
                 Update
@@ -113,8 +123,57 @@ const ManageAccount = () => {
               <br />
             </form>
           </Grid>
-
-          {/* </Grid> */}
+          <div>
+            {" "}
+            <Grid item>
+              <form onSubmit={handleBank}>
+                <TextField
+                  sx={{ width: "100%", m: 1 }}
+                  id="standard-basic"
+                  label="Bank Name"
+                  name="BankName"
+                  onBlur={handleBankblur}
+                  type="text"
+                  required
+                />
+                <br />
+                <TextField
+                  sx={{ width: "100%", m: 1 }}
+                  id="standard-basic"
+                  label="Bank Holder Name"
+                  name="Name"
+                  onBlur={handleBankblur}
+                  type="text"
+                  required
+                />
+                <br />
+                <TextField
+                  sx={{ width: "100%", m: 1 }}
+                  id="standard-basic"
+                  label="Account Number"
+                  name="accountNumber"
+                  onBlur={handleBankblur}
+                  type="number"
+                  required
+                />
+                <br />
+                <TextField
+                  sx={{ width: "100%", m: 1 }}
+                  id="standard-basic"
+                  label="Routing Number"
+                  name="routingNumber"
+                  onBlur={handleBankblur}
+                  type="number"
+                  required
+                />
+                <br />
+                <button type="submi" className="sign-up-btn mb-5">
+                  Update Bank Details
+                </button>{" "}
+                <br />
+              </form>
+            </Grid>
+          </div>
         </Container>
       </div>
     </div>

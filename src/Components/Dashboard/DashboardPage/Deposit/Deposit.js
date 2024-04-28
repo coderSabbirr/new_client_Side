@@ -13,6 +13,9 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/useAuth";
 import "./Deposit.css";
+import bkash from "./deposit-ewallet-bkash.svg";
+import nagad from "./deposit-ewallet-nagad.svg";
+import rocket from "./deposit-ewallet-rocket.svg";
 const fileInput = React.createRef();
 
 const Deposit = () => {
@@ -68,11 +71,11 @@ const Deposit = () => {
   );
 
   return (
-    <div className="add-deposit">
-      <h3 className="page-title">Deposit</h3>
-      <div className="container ">
-        <form className="row  deposit-from" onSubmit={handleSubmit(onSubmit)}>
-          <div>
+    <div className=" p-5">
+      <h3 className="div-main-title">Deposit</h3>
+      <div className=" ">
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <div className="dep-container">
             <FormControl className="row">
               <RadioGroup
                 row
@@ -81,7 +84,7 @@ const Deposit = () => {
                 onBlur={handleOnBlur}
               >
                 <div className="col">
-                  <Card sx={{ minWidth: 275 }}>
+                  <Card sx={{ minWidth: 275 }} className="bkashDiv">
                     <CardContent>
                       <FormControlLabel
                         value="Bkash"
@@ -90,9 +93,9 @@ const Deposit = () => {
                         required
                       />
                       <Typography variant="h5" component="div">
-                        Bkash
+                        <img src={bkash} alt="bkash" />
                       </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      <Typography sx={{ mb: 1.5 }} color="text.black">
                         0178888899
                       </Typography>
                       <Typography variant="body2"></Typography>
@@ -100,8 +103,8 @@ const Deposit = () => {
                   </Card>
                 </div>
 
-                <div className="col">
-                  <Card sx={{ minWidth: 275 }}>
+                <div className="col  ">
+                  <Card sx={{ minWidth: 275 }} className="nagadDiv">
                     <CardContent>
                       <FormControlLabel
                         value="Nagad"
@@ -109,9 +112,9 @@ const Deposit = () => {
                         labelPlacement="top"
                       />
                       <Typography variant="h5" component="div">
-                        Nagad
+                        <img src={nagad} alt="nagad" />
                       </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      <Typography sx={{ mb: 1.5 }} color="text.black">
                         0178888899
                       </Typography>
                       <Typography variant="body2"></Typography>
@@ -120,7 +123,7 @@ const Deposit = () => {
                 </div>
                 <div className="w-100"></div>
                 <div className="col">
-                  <Card sx={{ minWidth: 275 }}>
+                  <Card sx={{ minWidth: 275 }} className="rocketDiv">
                     <CardContent>
                       <FormControlLabel
                         value="Rocket"
@@ -128,9 +131,9 @@ const Deposit = () => {
                         labelPlacement="top"
                       />
                       <Typography variant="h5" component="div">
-                        Rocket
+                        <img src={rocket} alt="rocket" />
                       </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      <Typography sx={{ mb: 1.5 }} color="text.black">
                         0178888899
                         <br />
                         <br />
@@ -141,7 +144,7 @@ const Deposit = () => {
                 </div>
 
                 <div className="col">
-                  <Card sx={{ minWidth: 275 }}>
+                  <Card sx={{ minWidth: 275 }} className="bankDiv">
                     <CardContent>
                       <FormControlLabel
                         value="Bank"
@@ -151,7 +154,7 @@ const Deposit = () => {
                       <Typography variant="h5" component="div">
                         Bank
                       </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      <Typography sx={{ mb: 1.5 }} color="text.black">
                         AC NO: 07788888 | AC Name: ALEX FORD AC NO: 07788888{" "}
                         <></> <br />
                         Routing No: ALEX FORD | Bank Name:ABC Bank
@@ -163,52 +166,58 @@ const Deposit = () => {
               </RadioGroup>
             </FormControl>
           </div>
-          <p className="product-details">Deposit Deatils</p>
-          <div className="col-md-12"></div>
-          <div className="col-12 hide">
-            <input
-              value={user.email}
-              className="form-control"
-              {...register("usermail", { required: true })}
-            />
-          </div>
-          <div className="col-12">
-            <label className="form-label">Sender Number </label>
-            <input
-              type="number"
-              className="form-control"
-              {...register("phonenumber", { required: true })}
-            />
-          </div>
-          <div className="col-12">
-            <label className="form-label">Transaction ID </label>
-            <input
-              type="text"
-              className="form-control"
-              {...register("txnid", { required: true })}
-            />
-          </div>
-          <div className="col-12">
-            <label className="form-label">Amount</label>
-            <input
-              type="text"
-              className="form-control"
-              {...register("amount", { required: true })}
-            />
-          </div>
-          <div className="col-md-12 mb-5">
-            <label className="form-label">Upload Payemnt Screenshot </label>
-            <input
-              type="file"
-              className="form-control "
-              accept="image/*"
-              id="inputCity"
-              ref={fileInput}
-            />
-          </div>
 
-          <div className="col-12  mb-5">
-            <input type="submit" value="Submit" className="btn btn-primary" />
+          <div className="input-dev-dep">
+            <div className="col-12 hide">
+              <input
+                value={user.email}
+                className="form-control"
+                {...register("usermail", { required: true })}
+              />
+            </div>
+            <div className="col-12">
+              <label className="form-label">Sender Number </label>
+              <input
+                type="number"
+                className="form-control"
+                {...register("phonenumber", { required: true })}
+              />
+            </div>
+            <div className="col-12">
+              <label className="form-label">Transaction ID </label>
+              <input
+                type="text"
+                className="form-control"
+                {...register("txnid", { required: true })}
+              />
+            </div>
+            <div className="col-12">
+              <label className="form-label">Deposit Amount</label>
+              <input
+                type="text"
+                className="form-control"
+                {...register("amount", { required: true })}
+              />
+            </div>
+            <div className="col-md-12 mb-5">
+              <label className="form-label">Upload Payemnt Screenshot </label>
+              <input
+                type="file"
+                className="form-control "
+                accept="image/*"
+                id="inputCity"
+                ref={fileInput}
+                required
+              />
+            </div>
+
+            <div className="col-12  mb-5">
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn-warning submit-btn-dep"
+              />
+            </div>
           </div>
         </form>
       </div>

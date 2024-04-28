@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Iframe from "react-iframe";
 import useAuth from "../../../../Hook/useAuth";
 import "./username.css";
@@ -7,12 +7,12 @@ import "./username.css";
 const UserName = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
-  useEffect(() => {
-    const url = `http://localhost:5000/orders/${user.email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, [user]);
+  // useEffect(() => {
+  //   const url = `http://localhost:5000/${user.email}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setOrders(data));
+  // }, [user]);
   return (
     <div className="myorder usernamePage">
       <h1 className="heading" style={{ backgroundColor: "#FCF6F6" }}>

@@ -1,25 +1,64 @@
-.deposit-from {
-  border-radius: 10px;
-  background-color: white;
-  margin: auto;
+.bkashDiv {
+  /* margin-bottom: 5px;
+  margin-right: 5px; */
+  border-radius: 10px !important;
+  border: 2px solid #bdbdbd;
+  margin: 2px;
+}
+.nagadDiv {
+  padding-bottom: 21px;
+  margin: 2px;
+
+  border: 2px solid #bdbdbd;
+  border-radius: 10px !important;
+}
+.rocketDiv {
+  border-radius: 10px !important;
+  border: 2px solid #bdbdbd;
+  margin: 2px;
+}
+.bankDiv {
+  border-radius: 10px !important;
+  border: 2px solid #bdbdbd;
+  margin: 2px;
+  padding-bottom: 4px;
+}
+.input-dev-dep {
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 30px;
+}
+.div-main-title {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.submit-btn-dep {
+  padding-left: 80px;
+  padding-right: 80px;
+  color: black !important;
+  font-weight: bold;
+}
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+  .input-dev-dep {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .bkashDiv {
+    margin: 2px;
+  }
+  .nagadDiv {
+    margin: 2px;
+  }
+  .rocketDiv {
+    margin: 2px;
+  }
+  .bankDiv {
+    margin: 2px;
+  }
 }
 
-.page-title {
-  background-color: #fcf6f6;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-  border-radius: 10px;
-}
-.product-details {
-  padding-top: 5px;
-  font-weight: 500;
-  font-size: 18px;
+@media (min-width: 768px) {
 }
 
-.add-deposit {
-  border-style: solid;
-  border-color: #acacac;
-  border-radius: 30px;
-  border-width: 10px;
+@media (min-width: 992px) {
 }
