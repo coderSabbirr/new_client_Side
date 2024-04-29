@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const SignleAdminWithdraw = ({ depositData }) => {
+const SignleAdminWithdraw = ({ depositData, index }) => {
   const withdrawTime = new Date().toLocaleString();
   const {
     _id,
@@ -92,7 +92,7 @@ const SignleAdminWithdraw = ({ depositData }) => {
     <tbody>
       <tr>
         {/* <th scope="row">1</th> */}
-        <td>10</td>
+        <td>{index + 1}</td>
         <td>
           {name}
           {accountName}

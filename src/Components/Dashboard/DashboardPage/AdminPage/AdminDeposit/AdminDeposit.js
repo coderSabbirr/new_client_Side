@@ -11,8 +11,8 @@ const AdminDeposit = () => {
   });
 
   return (
-    <div className="manageorder">
-      <h1>Deposit History</h1>
+    <div className="manageorder p-2">
+      <h1 className="page-title mt-4">Deposit History</h1>
       <div className=" table-responsive ">
         <table className="table table-bordered border-dark ">
           <thead className=" ">
@@ -27,8 +27,9 @@ const AdminDeposit = () => {
               <th scope="col">Delete Deposit</th>
             </tr>
           </thead>
-          {depositDatas.map((depositData) => (
+          {depositDatas.map((depositData, index) => (
             <SignleAdminDeposit
+              index={index}
               depositData={depositData}
               key={depositData._id}
             ></SignleAdminDeposit>

@@ -14,13 +14,11 @@ const UserHistory = () => {
   }, []);
   console.log(userList.agent);
   return (
-    <div className="add-deposit ">
-      <div className="mt-5 mb-5 passwordChange "></div>
-      <h3>User History</h3>
-      <div className="container ">
+    <div className=" p-2">
+      <h3 className="page-title mt-4 ">User History</h3>
+      <div className="">
         <Container className="text-center ">
-          <div className="SupportAgent">
-            <h5 className="mt-10 mb-10">Remove Agent</h5>
+          <div className="">
             <div className="table-responsive ">
               <table className="table table-bordered ">
                 <thead>

@@ -74,7 +74,7 @@ const Withdraw = () => {
 
   return (
     <div className="add-deposit">
-      <h3 className="page-title">Withdraw</h3>
+      <h3 className="page-title mt-4">Withdraw</h3>
       <div className="container ">
         <Container className="text-center register">
           {/* <Grid container spacing={2}> */}
@@ -138,7 +138,7 @@ const Withdraw = () => {
                     className="your-email"
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="Account Name"
+                    label="Bank Holder Name"
                     name="accountName"
                     onBlur={handleOnBlur}
                     type="text"
@@ -165,7 +165,7 @@ const Withdraw = () => {
                   <TextField
                     sx={{ width: "100%", m: 1 }}
                     id="standard-basic"
-                    label="Amount $"
+                    label="Withdraw Amount"
                     name="amount"
                     onBlur={handleOnBlur}
                     type="number"
@@ -174,9 +174,12 @@ const Withdraw = () => {
                 </div>
               </div>
               <br />
-              <button type="submi" className="sign-up-btn mb-5">
-                Request Withdraw
-              </button>{" "}
+              <input
+                type="submit"
+                value="Withdraw Request"
+                className="btn btn-warning submit-btn-dep"
+              />
+
               <br />
             </form>
           </Grid>

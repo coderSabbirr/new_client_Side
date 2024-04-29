@@ -11,8 +11,8 @@ const AdminWithdraw = () => {
   });
 
   return (
-    <div className="manageorder">
-      <h2 className="mb-5">Withdraw History</h2>
+    <div className="manageorder p-2">
+      <h2 className="page-title mt-4">Withdraw History</h2>
       <div className="table-responsive ">
         <table className="table table-bordered border-dark ">
           <thead className=" ">
@@ -28,8 +28,9 @@ const AdminWithdraw = () => {
               {/* <th scope="col">Cencel Order</th> */}
             </tr>
           </thead>
-          {depositDatas.map((depositData) => (
+          {depositDatas.map((depositData, index) => (
             <SignleAdminWithdraw
+              index={index}
               depositData={depositData}
               key={depositData._id}
             ></SignleAdminWithdraw>

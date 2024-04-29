@@ -1,7 +1,6 @@
 import { Box, Container, Grid, TextField } from "@mui/material";
-import { getAuth, updatePassword } from "firebase/auth";
+
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../../Hook/useAuth";
 import "./AdminSettings.css";
@@ -9,10 +8,7 @@ import "./AdminSettings.css";
 const AdminSettings = () => {
   const [loginData, setLoginData] = useState({});
   const [agent, setAgent] = useState([]);
-  const [newPassword, setNewPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const { reset } = useForm();
   const { user, isLoading } = useAuth();
 
   const handleOnBlur = (e) => {
@@ -24,27 +20,6 @@ const AdminSettings = () => {
   };
 
   // password change options
-  const handleChangePassword = () => {
-    // if (loginData.password !== loginData.password2) {
-    //   return;
-    // }
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    // Update the user's password
-    updatePassword(user, newPassword)
-      .then(() => {
-        // Password updated successfully
-        console.log("Password updated successfully");
-        setNewPassword("");
-        setErrorMessage("");
-      })
-      .catch((error) => {
-        // An error occurred
-        console.error("Error updating password:", error.message);
-        setErrorMessage(error.message);
-      });
-  };
 
   useEffect(() => {
     fetch("http://localhost:5000/agentlist")
@@ -63,9 +38,7 @@ const AdminSettings = () => {
       .then((result) => {
         if (result.insertedId) {
           Swal.fire("Agent!", "", "Success");
-          reset();
         }
-        reset();
       });
 
     e.preventDefault();
@@ -109,64 +82,15 @@ const AdminSettings = () => {
       });
   };
   return (
-    <div className="add-deposit">
-      <div className="mt-5 mb-5 passwordChange ">
-        <div>
-          <h2>Change Password:</h2>
-
-          <br />
-          <TextField
-            sx={{ width: "40%", m: 1 }}
-            id="standard-basic"
-            label="New Password "
-            type="password"
-            name="password2"
-            onBlur={handleOnBlur}
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <br />
-
-          {/* <div className="container">
-            <div class="form-group mx-sm-3 mb-2">
-              <div row>
-                <div className="col">
-                  <h3>Password</h3>
-                </div>
-                <div className="col">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword2"
-                    placeholder="Password"
-                    style={{ width: "100%", marginLeft: "5px" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-          <button
-            className="btn btn-danger mt-2"
-            onClick={handleChangePassword}
-          >
-            Change Password
-          </button>
-          {errorMessage && (
-            <div className="">Password should be at least 6 characters</div>
-          )}
-        </div>
-      </div>
+    <div className="add-deposit p-2">
       <h3
-        className="
+        className="page-title mt-4
       "
       >
         Add Agent:{" "}
       </h3>
       <div className="container ">
         <Container className="text-center register">
-          {/* <Grid container spacing={2}> */}
           <Grid item>
             <p className="or-sign"></p>
 
@@ -213,7 +137,7 @@ const AdminSettings = () => {
 
           {/* </Grid> */}
 
-          <div className="SupportAgent">
+          <div className="">
             <h5 className="mt-10 mb-10">Remove Agent</h5>
             <div className="table-responsive ">
               <table className="table table-bordered ">

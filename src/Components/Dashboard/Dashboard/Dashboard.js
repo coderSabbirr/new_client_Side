@@ -23,7 +23,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled, useTheme } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import PrivateRoute from "../../PrivateRoute/PrivateRoute";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -35,10 +35,12 @@ import DepositAdminReport from "../DashboardPage/AdminPage/DepositAdminReport/De
 import ManageAccount from "../DashboardPage/AdminPage/ManageAccount/ManageAccount";
 import UserHistory from "../DashboardPage/AdminPage/UserHistory/UserHistory";
 import WithdrawAdminReport from "../DashboardPage/AdminPage/WithdrawAdminReport/WithdrawAdminReport";
+import Adminpassword from "../DashboardPage/Adminpassword/Adminpassword";
 import UserName from "../DashboardPage/DashboardUser/UserName/UserName";
 import Deposit from "../DashboardPage/Deposit/Deposit";
 import SettingsPage from "../DashboardPage/SettingsPage/SettingsPage";
 import Support from "../DashboardPage/Support/Support";
+import UserPassword from "../DashboardPage/UserPassword/UserPassword";
 import Withdraw from "../DashboardPage/Withdraw/Withdraw";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import "./Dashboard.css";
@@ -227,6 +229,16 @@ const Dashbaord = () => {
                   <ListItem disablePadding>
                     <ListItemButton>
                       <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/passwordchanage`}>
+                        <ListItemText primary="Password Chanage" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
                         <AddCircleOutlineIcon />
                       </ListItemIcon>
                       <Link to={`${url}/admindeposit`}>
@@ -261,6 +273,16 @@ const Dashbaord = () => {
                       </ListItemIcon>
                       <Link to={`${url}/adminSettings`}>
                         <ListItemText primary="Settings" />
+                      </Link>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <Link to={`${url}/adminpass`}>
+                        <ListItemText primary="Password Change" />
                       </Link>
                     </ListItemButton>
                   </ListItem>
@@ -346,6 +368,9 @@ const Dashbaord = () => {
                 <PrivateRoute path={`${path}/settings`}>
                   <SettingsPage />
                 </PrivateRoute>
+                <PrivateRoute path={`${path}/passwordchanage`}>
+                  <UserPassword />
+                </PrivateRoute>
 
                 <AdminRoute path={`${path}/admindeposit`}>
                   <AdminDeposit />
@@ -358,6 +383,9 @@ const Dashbaord = () => {
                 </AdminRoute>
                 <AdminRoute path={`${path}/adminsettings`}>
                   <AdminSettings />
+                </AdminRoute>
+                <AdminRoute path={`${path}/adminpass`}>
+                  <Adminpassword />
                 </AdminRoute>
                 <AdminRoute path={`${path}/manageaccount`}>
                   <ManageAccount />
@@ -376,9 +404,9 @@ const Dashbaord = () => {
                   <MakeAdmin></MakeAdmin>
                 </AdminRoute>
 
-                <Route path={path}>
+                <PrivateRoute path={path}>
                   <UserName />
-                </Route>
+                </PrivateRoute>
               </Switch>
             </main>
           </Box>

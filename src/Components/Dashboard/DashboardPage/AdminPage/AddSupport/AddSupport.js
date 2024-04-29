@@ -80,24 +80,14 @@ const AddSupport = () => {
         }
       })
       .then((res) => res.json())
-      .then((data) => {
-        // window.location.reload();
-      });
+      .then((data) => {});
   };
   return (
-    <div className="add-deposit">
-      <h3
-        className="
-      "
-      >
-        Add Suuport:{" "}
-      </h3>
-      <div className="container ">
+    <div className="p-2">
+      <h3 className="page-title mt-4">Add Support:</h3>
+      <div className="">
         <Container className="text-center register">
-          {/* <Grid container spacing={2}> */}
           <Grid item>
-            <p className="or-sign"></p>
-
             <form onSubmit={handleLoginSubmit}>
               <div>
                 <div>
@@ -132,8 +122,8 @@ const AddSupport = () => {
 
           {/* </Grid> */}
 
-          <div className="SupportAgent">
-            <h5 className="mt-10 mb-10">Remove Suuport Agent</h5>
+          <div className="">
+            <h5 className="mt-10 mb-10 mb-2 ">Remove Support Agent</h5>
             <div className="table-responsive ">
               <table className="table table-bordered ">
                 <thead>

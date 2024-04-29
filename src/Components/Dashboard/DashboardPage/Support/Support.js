@@ -10,7 +10,7 @@ const Support = () => {
   }, []);
   return (
     <div className="SupportAgent">
-      <h5 className="page-title"> Support Agent List</h5>
+      <h5 className="page-title mt-4"> Support Agent List</h5>
       <div className="table-responsive ">
         <table className="table table-bordered ">
           <thead>

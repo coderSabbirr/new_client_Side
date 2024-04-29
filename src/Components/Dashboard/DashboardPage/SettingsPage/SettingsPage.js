@@ -186,14 +186,12 @@ const SettingsPage = () => {
   );
 
   return (
-    <div className="add-deposit">
-      <h3 className="page-title">Add Payment Details </h3>
+    <div className="">
+      <h3 className="page-title mt-5">Add Payment Details </h3>
       <div className="container ">
         <Container className="text-center register">
           {/* <Grid container spacing={2}> */}
           <Grid item>
-            <p className="or-sign"></p>
-
             <form onSubmit={handleLoginSubmit}>
               <div>
                 <TextField
@@ -377,7 +375,7 @@ const SettingsPage = () => {
 
       <div>
         <div className="SupportAgent">
-          <h5 className="mt-10 mb-10">Manage Mobile Account</h5>
+          <h5 className="mt-10 mb-10">Manage Mobile Account :</h5>
           <div className="table-responsive ">
             <table className="table table-bordered ">
               <thead>
@@ -410,7 +408,7 @@ const SettingsPage = () => {
       </div>
       <div>
         <div className="SupportAgent">
-          <h5 className="mt-10 mb-10">Manage Bank Account</h5>
+          <h5 className="mt-10 mb-10">Manage Bank Account :</h5>
           <div className="table-responsive ">
             <table className="table table-bordered ">
               <thead>
@@ -447,32 +445,6 @@ const SettingsPage = () => {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-      <div className="mt-5 mb-5 passwordChange ">
-        <div>
-          <h2>Change Password:</h2>
-
-          <br />
-          <TextField
-            sx={{ width: "40%", m: 1 }}
-            id="standard-basic"
-            label="New Password "
-            type="password"
-            name="password2"
-            onBlur={handleOnBlur}
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <br />
-
-          <button className="btn btn-danger" onClick={handleChangePassword}>
-            Change Password
-          </button>
-          {errorMessage && (
-            <div className="">Password should be at least 6 characters</div>
-          )}
         </div>
       </div>
     </div>

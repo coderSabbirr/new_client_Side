@@ -1,5 +1,4 @@
 import {
-  Box,
   Container,
   FormControl,
   Grid,
@@ -66,16 +65,10 @@ const ManageAccount = () => {
         }
       });
   };
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-    ></Box>
-  );
 
   return (
-    <div className="add-deposit">
-      <h3 className="page-title">Manage Account</h3>
+    <div className="p-2">
+      <h3 className="page-title mt-4">Manage Account</h3>
       <div className="container ">
         <Container className="text-center register">
           {/* <Grid container spacing={2}> */}

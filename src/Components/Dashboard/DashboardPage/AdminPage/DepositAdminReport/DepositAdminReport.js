@@ -28,13 +28,14 @@ const DepositAdminReport = () => {
     e.preventDefault();
   };
   return (
-    <div className="manageorder">
-      <div className="">
+    <div className=" mt-2 p-2">
+      <div className=" mt-5">
         <form onSubmit={handleLoginSubmit} className="row">
           <div className="flex-container">
             <div className="text-1">
               <TextField
-                sx={{ width: "100%", m: 1 }}
+                className="report-input"
+                sx={{ m: 1 }}
                 id="standard-basic"
                 label="User Name"
                 name="userName"
@@ -44,10 +45,10 @@ const DepositAdminReport = () => {
               />
             </div>
 
-            <div className="text-2">
-              <button type="submi" className="sign-up-btn mb-5">
+            <div className="">
+              <button type="submit" className="submit-btn btn btn-warning ">
                 Submit
-              </button>{" "}
+              </button>
             </div>
           </div>
           <br />
@@ -68,17 +69,9 @@ const DepositAdminReport = () => {
 
             {mainDatas
               ?.filter((person) => person?.email === mailData1.userName)
-              .map((mainData) => (
+              .map((mainData, index) => (
                 <SignleDepositAdminReport
-                  mainData={mainData}
-                  key={mainData?._id}
-                ></SignleDepositAdminReport>
-              ))}
-
-            {mainDatas
-              ?.filter((person) => person?.email === mailData1.userName)
-              .map((mainData) => (
-                <SignleDepositAdminReport
+                  index={index}
                   mainData={mainData}
                   key={mainData?._id}
                 ></SignleDepositAdminReport>

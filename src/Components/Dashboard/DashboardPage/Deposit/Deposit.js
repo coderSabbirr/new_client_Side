@@ -8,6 +8,7 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -34,6 +35,7 @@ const Deposit = () => {
   const onSubmit = (data) => {
     const depositTime = new Date().toLocaleString();
     let image = fileInput.current.files[0];
+
     const formData = new FormData();
 
     for (var key in loginData) {
@@ -72,7 +74,7 @@ const Deposit = () => {
 
   return (
     <div className=" p-5">
-      <h3 className="div-main-title">Deposit</h3>
+      <h3 className="submit-btn-dep mt-3 mb-3">Deposit</h3>
       <div className=" ">
         <form className="" onSubmit={handleSubmit(onSubmit)}>
           <div className="dep-container">

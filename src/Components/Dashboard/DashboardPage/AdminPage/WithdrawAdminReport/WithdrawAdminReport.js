@@ -1,40 +1,52 @@
-import React, { useEffect, useState } from "react";
-
 import { TextField } from "@mui/material";
-import SingleWithdrawAdminReport from "./SingleWithdrawAdminReportWithdrawAdminReport/SingleWithdrawAdminReportWithdrawAdminReport";
+import React, { useEffect, useState } from "react";
+import SingleWithdrawAdminReport from "./SingleWithdrawAdminReportWithdrawAdminReport/SingleWithdrawAdminReport";
+import "./WithdrawAdminReport.css";
+
+// Import statements...
 
 const WithdrawAdminReport = () => {
-  const [mainDatas, setMainData] = useState([]);
+  const [mainDatas, setMainDatas] = useState([]);
+  const [AllMainDatas, setAllMainDatas] = useState([]);
   const [mailData, setMailData] = useState({});
-  const [mailData1, setMailData1] = useState({});
 
   const handleMail = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    const newLoginData = { ...mailData };
-    newLoginData[field] = value;
-    setMailData(newLoginData);
+    const newMailData = { ...mailData, [field]: value };
+    setMailData(newMailData);
   };
-  //   ?.filter((person) => person.selectSubAdmin === selectname)
+
   useEffect(() => {
     fetch("http://localhost:5000/withdraw")
-      .then((res) => res.json())
-      .then((data) => setMainData(data));
-  });
+      .then((response) => response.json())
+      .then((data) => {
+        setMainDatas(data);
+        setAllMainDatas(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const handleLoginSubmit = (e) => {
-    setMailData1(mailData);
     e.preventDefault();
+
+    const filtered = AllMainDatas.filter((allMainData) => {
+      const withdrawData = allMainData.user_email;
+      return withdrawData === mailData.userName;
+    });
+
+    setMainDatas(filtered);
   };
 
   return (
-    <div className="manageorder">
-      <div className="">
+    <div className=" mt-2 p-2">
+      <div className=" mt-5">
         <form onSubmit={handleLoginSubmit} className="row">
           <div className="flex-container">
             <div className="text-1">
               <TextField
-                sx={{ width: "90%", m: 1 }}
+                className="report-input"
+                sx={{ m: 1 }}
                 id="standard-basic"
                 label="User Name"
                 name="userName"
@@ -44,15 +56,15 @@ const WithdrawAdminReport = () => {
               />
             </div>
 
-            <div className="text-2">
-              <button type="submi" className="btn btn-primary mt-3">
+            <div className="">
+              <button type="submit" className="submit-btn btn btn-warning ">
                 Submit
-              </button>{" "}
+              </button>
             </div>
           </div>
           <br />
         </form>
-        <div className="table-responsive  mt-5">
+        <div className="table-responsive mt-5">
           <table className="table table-bordered border-dark ">
             <thead className=" ">
               <tr>
@@ -65,19 +77,18 @@ const WithdrawAdminReport = () => {
                 <th scope="col">Submit Date</th>
               </tr>
             </thead>
-            {mainDatas
-              ?.filter((person) => person?.user_email === mailData1.userName)
-              .map((mainData) => (
-                <SingleWithdrawAdminReport
-                  mainData={mainData}
-                  key={mainData?._id}
-                ></SingleWithdrawAdminReport>
-              ))}
+
+            {mainDatas.map((mainData, index) => (
+              <SingleWithdrawAdminReport
+                index={index}
+                mainData={mainData}
+                key={mainData?._id}
+              ></SingleWithdrawAdminReport>
+            ))}
           </table>
         </div>
       </div>
     </div>
   );
 };
-
 export default WithdrawAdminReport;

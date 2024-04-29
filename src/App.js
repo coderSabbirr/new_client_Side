@@ -3,6 +3,7 @@ import "./App.css";
 import AuthProvider from "./Components/Context/AuthProvider";
 import Dashbaord from "./Components/Dashboard/Dashboard/Dashboard";
 import SilderPro2 from "./Components/Dashboard/Dashboard/SilderPro2";
+import DatePicker from "./Components/Dashboard/DashboardPage/AdminPage/DatePicker/DatePicker";
 import Login from "./Components/Pages/Login/Login";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import Register from "./Components/Pages/Register/Register";
@@ -19,6 +20,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Login></Login>
+            </Route>
+            <Route exact path="/date">
+              <DatePicker />
             </Route>
 
             <Route exact path="/silder">

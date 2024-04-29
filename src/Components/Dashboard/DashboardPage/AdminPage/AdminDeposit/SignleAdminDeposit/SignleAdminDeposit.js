@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const SignleAdminDeposit = ({ depositData }) => {
+const SignleAdminDeposit = ({ depositData, index }) => {
   const { DepositMethod, phonenumber, txnid, displayName, _id } = depositData;
   const status = depositData.status.status;
   const approveTime = new Date().toLocaleString();
@@ -83,7 +83,7 @@ const SignleAdminDeposit = ({ depositData }) => {
     <tbody>
       <tr>
         {/* <th scope="row">1</th> */}
-        <td>10</td>
+        <td>{index + 1}</td>
         <td>{displayName}</td>
         <td>{DepositMethod}</td>
         <td>{txnid}</td>
