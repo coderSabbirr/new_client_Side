@@ -1,5 +1,8 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import SingleWithdrawAdminReport from "./SingleWithdrawAdminReportWithdrawAdminReport/SingleWithdrawAdminReport";
 import "./WithdrawAdminReport.css";
 
@@ -9,6 +12,8 @@ const WithdrawAdminReport = () => {
   const [mainDatas, setMainDatas] = useState([]);
   const [AllMainDatas, setAllMainDatas] = useState([]);
   const [mailData, setMailData] = useState({});
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const handleMail = (e) => {
     const field = e.target.name;
@@ -30,7 +35,7 @@ const WithdrawAdminReport = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
-    const filtered = AllMainDatas.filter((allMainData) => {
+    const filtered = mainDatas.filter((allMainData) => {
       const withdrawData = allMainData.user_email;
       return withdrawData === mailData.userName;
     });
@@ -38,9 +43,35 @@ const WithdrawAdminReport = () => {
     setMainDatas(filtered);
   };
 
+  const handleSelect = (date) => {
+    let filtereded = AllMainDatas.filter((product) => {
+      let productDate = new Date(product.time);
+
+      return (
+        productDate >= date.selection.startDate &&
+        productDate <= date.selection.endDate
+      );
+    });
+    setStartDate(date.selection.startDate);
+    setEndDate(date.selection.endDate);
+    setMainDatas(filtereded);
+  };
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
   return (
     <div className=" mt-2 p-2">
       <div className=" mt-5">
+        {/* <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} /> */}
+        <div className="mb-3">
+          <DateRange
+            editableDateInputs={true}
+            onChange={handleSelect}
+            ranges={[selectionRange]}
+          />
+        </div>
         <form onSubmit={handleLoginSubmit} className="row">
           <div className="flex-container">
             <div className="text-1">

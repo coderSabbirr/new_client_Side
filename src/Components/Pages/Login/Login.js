@@ -40,7 +40,7 @@ const Login = () => {
           </p>
           <form onSubmit={handleLoginSubmit}>
             <TextField
-              className="your-email"
+              className="your-email text-input-login"
               sx={{ width: "40%", m: 1 }}
               id="standard-basic"
               label="Your Email"
@@ -50,6 +50,7 @@ const Login = () => {
             />{" "}
             <br />
             <TextField
+              className="text-input-login"
               sx={{ width: "40%", m: 1 }}
               id="standard-basic"
               label="Your Password"

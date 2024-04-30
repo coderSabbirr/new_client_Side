@@ -46,9 +46,8 @@ const ManageAccount = () => {
       body: JSON.stringify(loginData),
     })
       .then((res) => res.json())
-      .then((result) => {
-        e.preventDefault();
-      });
+      .then((result) => {});
+    e.preventDefault();
   };
 
   const handleBank = (e) => {
@@ -88,6 +87,8 @@ const ManageAccount = () => {
                     name="mobileMethod"
                     onBlur={handleOnBlur}
                   >
+                    {" "}
+                    <option aria-label="None" value="" />
                     <option value="Bkash" className="text-capitalize">
                       Bkash
                     </option>

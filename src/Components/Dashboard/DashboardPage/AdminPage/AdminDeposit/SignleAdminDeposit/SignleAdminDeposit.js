@@ -1,8 +1,22 @@
-import React from "react";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Button, DialogContent, IconButton } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import { styled } from "@mui/material/styles";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
+
 const SignleAdminDeposit = ({ depositData, index }) => {
-  const { DepositMethod, phonenumber, txnid, displayName, _id } = depositData;
+  const { DepositMethod, phonenumber, txnid, displayName, _id, image } =
+    depositData;
   const status = depositData.status.status;
   const approveTime = new Date().toLocaleString();
 
@@ -51,7 +65,7 @@ const SignleAdminDeposit = ({ depositData, index }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          const url = `http://localhost:5000/ordersupdate/${id}`;
+          const url = `http://localhost:5000/depositupdate/${id}`;
           fetch(url, {
             method: "PUT",
             headers: {
@@ -79,6 +93,14 @@ const SignleAdminDeposit = ({ depositData, index }) => {
     stutesbar = status;
   }
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <tbody>
       <tr>
@@ -88,7 +110,36 @@ const SignleAdminDeposit = ({ depositData, index }) => {
         <td>{DepositMethod}</td>
         <td>{txnid}</td>
         <td>{phonenumber}</td>
-        <td>77777</td>
+        <td>
+          <Button variant="outlined" onClick={handleClickOpen}>
+            view
+          </Button>
+          <BootstrapDialog
+            onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={open}
+          >
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                right: 8,
+                top: 8,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+            <DialogContent dividers>
+              <img
+                className="w-100 image"
+                src={`data:image/png;base64,${image}`}
+                alt=""
+              />
+            </DialogContent>
+          </BootstrapDialog>
+        </td>
         <td>
           {depositData?.status?.status === "Approved" && (
             <button className="btn btn-primary " disabled>

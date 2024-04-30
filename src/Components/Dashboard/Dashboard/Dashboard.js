@@ -1,14 +1,18 @@
+import AddIcon from "@mui/icons-material/Add";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import CreateIcon from "@mui/icons-material/Create";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import HistoryIcon from "@mui/icons-material/History";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import MenuIcon from "@mui/icons-material/Menu";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import PasswordIcon from "@mui/icons-material/Password";
 import SettingsIcon from "@mui/icons-material/Settings";
-import SummarizeIcon from "@mui/icons-material/Summarize";
 import MuiAppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -93,7 +97,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Dashbaord = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, admin } = useAuth();
   let { path, url } = useRouteMatch();
   const [isAdmin, setIsAdmin] = useState(true);
 
@@ -108,7 +112,7 @@ const Dashbaord = () => {
         }
       });
   }, [user?.email]);
-
+  console.log(admin);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -169,174 +173,181 @@ const Dashbaord = () => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                  <ListItem disablePadding>
-                    <ListItemIcon></ListItemIcon>
-                    <Link to={`${url}/mydashboard`}>
-                      <ListItemText primary={user.email} />
-                    </Link>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <DashboardIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/mydashboard`}>
-                        <ListItemText primary="Dashboard" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AddCircleOutlineIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/deposit`}>
-                        <ListItemText primary="Deposit" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
+                  {isAdmin ? (
+                    <>
+                      <ListItem disablePadding>
+                        <ListItemIcon></ListItemIcon>
+                        <Link to={`${url}/mydashboard`}>
+                          <ListItemText primary={user.email} />
+                        </Link>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <DashboardIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/mydashboard`}>
+                            <ListItemText primary="Dashboard" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <AddCircleOutlineIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/deposit`}>
+                            <ListItemText primary="Deposit" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
 
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AttachMoneyIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/withdraw`}>
-                        <ListItemText primary="Withdraw" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <ContactSupportIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/Support`}>
-                        <ListItemText primary="Support" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/Settings`}>
-                        <ListItemText primary="Settings" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/passwordchanage`}>
-                        <ListItemText primary="Password Chanage" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AddCircleOutlineIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/admindeposit`}>
-                        <ListItemText primary="Deposit" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AttachMoneyIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/admintwithdraw`}>
-                        <ListItemText primary="Withdraw" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AttachMoneyIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/user`}>
-                        <ListItemText primary="User History" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/adminSettings`}>
-                        <ListItemText primary="Settings" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/adminpass`}>
-                        <ListItemText primary="Password Change" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/manageaccount`}>
-                        <ListItemText primary="Manage Account" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SettingsIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/addsupport`}>
-                        <ListItemText primary="Add Support" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <InboxIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/depositreport`}>
-                        <ListItemText primary="Deposit Report" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SummarizeIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/withdrawreport`}>
-                        <ListItemText primary="Withdraw Report" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <AttachMoneyIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/withdraw`}>
+                            <ListItemText primary="Withdraw" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <ContactSupportIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/Support`}>
+                            <ListItemText primary="Support" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <SettingsIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/Settings`}>
+                            <ListItemText primary="Settings" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <PasswordIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/passwordchanage`}>
+                            <ListItemText primary="Password Chanage" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                    </>
+                  ) : (
+                    <>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <AddCircleOutlineIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/admindeposit`}>
+                            <ListItemText primary="Deposit" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <AttachMoneyIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/admintwithdraw`}>
+                            <ListItemText primary="Withdraw" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <HistoryIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/user`}>
+                            <ListItemText primary="User History" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <SettingsIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/adminSettings`}>
+                            <ListItemText primary="Settings" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <PasswordIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/adminpass`}>
+                            <ListItemText primary="Password Change" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <ManageAccountsIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/manageaccount`}>
+                            <ListItemText primary="Manage Account" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <AddIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/addsupport`}>
+                            <ListItemText primary="Add Support" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <ManageSearchIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/depositreport`}>
+                            <ListItemText primary="Deposit Report" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <ManageSearchIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/withdrawreport`}>
+                            <ListItemText primary="Withdraw Report" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
 
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SummarizeIcon />
-                      </ListItemIcon>
-                      <Link to={`${url}/makeAdmin`}>
-                        <ListItemText primary="Make Admin" />
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <CreateIcon />
+                          </ListItemIcon>
+                          <Link to={`${url}/makeAdmin`}>
+                            <ListItemText primary="Make Admin" />
+                          </Link>
+                        </ListItemButton>
+                      </ListItem>
+                    </>
+                  )}
                 </List>
                 <Divider />
                 <ListItem disablePadding onClick={logOut}>

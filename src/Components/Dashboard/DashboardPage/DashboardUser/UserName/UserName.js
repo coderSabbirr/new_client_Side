@@ -1,23 +1,12 @@
 import { Box } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import Iframe from "react-iframe";
-import useAuth from "../../../../Hook/useAuth";
 import "./username.css";
 
 const UserName = () => {
-  const { user } = useAuth();
-  const [orders, setOrders] = useState([]);
-  // useEffect(() => {
-  //   const url = `http://localhost:5000/${user.email}`;
-  //   fetch(url)
-  //     .then((res) => res.json())
-  //     .then((data) => setOrders(data));
-  // }, [user]);
   return (
-    <div className="myorder usernamePage">
-      <h1 className="heading" style={{ backgroundColor: "#FCF6F6" }}>
-        User Dashboard
-      </h1>
+    <div className=" mt-5">
+      <h1 className="page-title ">User Dashboard</h1>
       <div className="">
         <div>
           <Box
@@ -32,7 +21,7 @@ const UserName = () => {
             <Box
               sx={{
                 p: 2,
-                border: "10px solid #ACACAC  ",
+                border: "3px solid #ACACAC  ",
                 borderRadius: "16px",
               }}
               component="section"
@@ -41,7 +30,7 @@ const UserName = () => {
             </Box>
             <Iframe
               url="https://www.babu88.co/"
-              width="90%"
+              width="95%"
               height="700px"
               id=""
               className="main-iframe"

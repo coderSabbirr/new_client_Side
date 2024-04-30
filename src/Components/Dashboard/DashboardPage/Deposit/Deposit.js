@@ -9,7 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/useAuth";
@@ -22,8 +23,9 @@ const fileInput = React.createRef();
 const Deposit = () => {
   const { register, handleSubmit, reset } = useForm();
   const [loginData, setLoginData] = useState({});
+  const [mobileDatas, setmobileDatas] = useState([]);
+  const [bankDatas, setBankData] = useState("");
   const { user } = useAuth();
-
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -31,6 +33,21 @@ const Deposit = () => {
     newLoginData[field] = value;
     setLoginData(newLoginData);
   };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/mobileaccount")
+      .then((response) => response.json())
+      .then((data) => {
+        setmobileDatas(data);
+      }, []);
+
+    axios.get("http://localhost:5000/bankaccount").then((response) => {
+      let bankDatas = response.data;
+      bankDatas?.map((person) => {
+        setBankData(person);
+      });
+    });
+  }, []);
 
   const onSubmit = (data) => {
     const depositTime = new Date().toLocaleString();
@@ -98,7 +115,7 @@ const Deposit = () => {
                         <img src={bkash} alt="bkash" />
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.black">
-                        0178888899
+                        {mobileDatas[0]?.mobileNumber}
                       </Typography>
                       <Typography variant="body2"></Typography>
                     </CardContent>
@@ -117,7 +134,7 @@ const Deposit = () => {
                         <img src={nagad} alt="nagad" />
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.black">
-                        0178888899
+                        {mobileDatas[1]?.mobileNumber}
                       </Typography>
                       <Typography variant="body2"></Typography>
                     </CardContent>
@@ -136,7 +153,7 @@ const Deposit = () => {
                         <img src={rocket} alt="rocket" />
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.black">
-                        0178888899
+                        {mobileDatas[2]?.mobileNumber}
                         <br />
                         <br />
                       </Typography>
@@ -157,13 +174,15 @@ const Deposit = () => {
                         Bank
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.black">
-                        AC NO: 07788888 | AC Name: ALEX FORD AC NO: 07788888{" "}
-                        <></> <br />
-                        Routing No: ALEX FORD | Bank Name:ABC Bank
+                        AC NO:{bankDatas?.accountNumber} | AC Name:
+                        {bankDatas?.Name} <></> <br />
+                        Routing No:{bankDatas?.routingNumber}| Bank Name:
+                        {bankDatas?.BankName}
                       </Typography>
                       <Typography variant="body2"></Typography>
                     </CardContent>
                   </Card>
+                  ;
                 </div>
               </RadioGroup>
             </FormControl>

@@ -102,3 +102,15 @@
     font-weight: 500;
   }
 }
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .text-input-login {
+    width: 90% !important;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}

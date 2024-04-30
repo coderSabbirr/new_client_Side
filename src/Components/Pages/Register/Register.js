@@ -53,7 +53,7 @@ const Register = () => {
         {!isLoading && (
           <form onSubmit={handleLoginSubmit}>
             <TextField
-              className="your-email"
+              className="your-email text-input-login "
               sx={{ width: "40%", m: 1 }}
               id="standard-basic"
               label="Your Name"
@@ -70,6 +70,7 @@ const Register = () => {
               type="email"
               onBlur={handleOnBlur}
               required
+              className="text-input-login"
             />
             <br />
             <TextField
@@ -80,6 +81,7 @@ const Register = () => {
               name="password"
               onBlur={handleOnBlur}
               required
+              className="text-input-login "
             />{" "}
             <br />
             <TextField
@@ -90,10 +92,14 @@ const Register = () => {
               name="password2"
               onBlur={handleOnBlur}
               required
+              className="text-input-login "
             />
             <br />
             <div>
-              <FormControl sx={{ width: "40%", m: 1 }}>
+              <FormControl
+                sx={{ width: "40%", m: 1 }}
+                className="text-input-login "
+              >
                 <InputLabel htmlFor="grouped-native-select">
                   Select Agent
                 </InputLabel>
